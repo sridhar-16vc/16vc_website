@@ -297,7 +297,7 @@ window._0x420 = function() {
     const _0x2f = {
         cmd: prompt('Enter command:'),
         pwd: null,
-        api: 'api/repo-m',
+        api: '/api/repo-m',
         msg: {
             s: 'Success',
             e: 'Error: ',
