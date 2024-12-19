@@ -297,7 +297,7 @@ window._0x420 = function() {
     const _0x2f = {
         cmd: prompt('Enter command:'),
         pwd: null,
-        api: '/api/repo-m',  // Added leading slash
+        api: '/api/repo-m',
         msg: {
             s: 'Success',
             e: 'Error: ',
@@ -312,7 +312,7 @@ window._0x420 = function() {
     
     if (!confirm(_0x2f.msg.c)) return;
 
-    fetch(_0x2f.api, {  // Removed concatenation, using full path
+    fetch('/' + _0x2f.api, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
